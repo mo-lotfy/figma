@@ -1,32 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Card from "../components/Card";
 import StatisticsCard from "../components/StatisticsCard";
 import CarCardMenuColored from "../components/CarCardMenuColored";
 
 const Dashboard = () => {
-  const [cars, setCars] = useState([]);
-
-  let getData = () => {
-    fetch("./cars.json", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    })
-      .then(async function (response) {
-        return await response.json();
-      })
-      .then(function (carsArray) {
-        setCars(carsArray.slice(0, 3));
-        return;
-      });
-  };
-
-  useEffect(() => {
-    getData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
     <div className="main-page-wrapper">
       <div className="flex flex-wrap -mx-4">
